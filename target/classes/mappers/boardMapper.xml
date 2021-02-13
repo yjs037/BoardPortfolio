@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+ "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="boardMapper">
+	<!-- 데이터를 넣을 때는 parameterType을 사용  -->
+	<insert id="insert" parameterType = "com.board.vo.BoardVo">
+		insert into board ( title, content)	values ( #{title}, #{content})	
+	</insert> 
+	
+	<!-- 쿼리를 실행한 뒤 결과가 있을경우 resultType을 사용  -->
+	<select id="list" resultType="com.board.vo.BoardVo">
+		select bno, title, writer, regDate, viewCnt from board order by bno desc
+	</select>
+	
+	<select id="read" parameterType="int" resultType="com.board.vo.BoardVo">
+		select bno, title, content, writer, regDate, viewCnt from board where bno = #{bno}
+	</select>
+	
+	<update id="modify" parameterType="com.board.vo.BoardVo">
+		update board set title = #{title}, content = #{content}, regDate = NOW() where bno = #{bno} 
+	</update>
+	
+	<delete id="remove" parameterType = "int">
+		delete from board where bno = #{bno}
+	</delete>
+
+</mapper>
