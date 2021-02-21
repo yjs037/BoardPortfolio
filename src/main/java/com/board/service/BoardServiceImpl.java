@@ -8,10 +8,12 @@ import org.springframework.stereotype.Service;
 
 import com.board.dao.BoardDao;
 import com.board.vo.BoardVo;
+import com.board.vo.Criteria;
 
-@Service
+//해당 서비스 객체가 자동으로 생성될 수 있도록 @Service를 붙인다. @Repository, @Component 등과 마찬가지로 root-context.xml에 context:component-scan을 지정해 주자.
+@Service // 컨트롤러에서 주입해서 쓰기 위함
 public class BoardServiceImpl implements BoardService {
-
+	//@Repository를 써서 자동 생성해놓은걸 DI
 	@Inject
 	private BoardDao dao;
 
@@ -19,6 +21,18 @@ public class BoardServiceImpl implements BoardService {
 	public void write(BoardVo boardVo) throws Exception {
 		dao.write(boardVo);
 	}
+	
+	//페이징
+	@Override
+	public List<BoardVo> listCri(Criteria cri) throws Exception {
+		return dao.listPageCri(cri);
+	}	
+	
+	@Override
+	public int pageCount() throws Exception {
+		return dao.pageCount();
+	}
+	
 
 	@Override
 	public List<BoardVo> list() throws Exception {

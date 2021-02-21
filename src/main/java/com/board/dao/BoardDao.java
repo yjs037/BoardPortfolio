@@ -3,8 +3,15 @@ package com.board.dao;
 import java.util.List;
 
 import com.board.vo.BoardVo;
+import com.board.vo.Criteria;
 
 public interface BoardDao {
+	
+	// 페이징 처리동작(Criteria 객체사용)
+	public List<BoardVo> listPageCri(Criteria cri) throws Exception;
+	
+	// DB 테이블 모든 글 갯수 계산 후 리턴
+	public int pageCount() throws Exception;
 	
 	//목록조회
 	public List<BoardVo> list() throws Exception;
@@ -20,9 +27,5 @@ public interface BoardDao {
 	
 	//게시물조회
 	public BoardVo read(int bno) throws Exception;
-
-
-
-	
 	
 }

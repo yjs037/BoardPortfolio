@@ -5,25 +5,62 @@
 
 <mapper namespace="boardMapper">
 	<!-- 데이터를 넣을 때는 parameterType을 사용  -->
-	<insert id="insert" parameterType = "com.board.vo.BoardVo">
+	<!-- 게시글 등록 -->
+	<insert id ="insert" parameterType = "com.board.vo.BoardVo">
 		insert into board ( title, content)	values ( #{title}, #{content})	
 	</insert> 
 	
+	<!-- 게시글 목록 -->
 	<!-- 쿼리를 실행한 뒤 결과가 있을경우 resultType을 사용  -->
-	<select id="list" resultType="com.board.vo.BoardVo">
+	<select id ="list" resultType="com.board.vo.BoardVo">
 		select bno, title, writer, regDate, viewCnt from board order by bno desc
 	</select>
 	
-	<select id="read" parameterType="int" resultType="com.board.vo.BoardVo">
+	<!-- 게시글 조회 -->
+	<select id ="read" parameterType="int" resultType="com.board.vo.BoardVo">
 		select bno, title, content, writer, regDate, viewCnt from board where bno = #{bno}
 	</select>
 	
-	<update id="modify" parameterType="com.board.vo.BoardVo">
+	<!-- 게시글 수정 -->
+	<update id ="modify" parameterType="com.board.vo.BoardVo">
 		update board set title = #{title}, content = #{content}, regDate = NOW() where bno = #{bno} 
 	</update>
 	
-	<delete id="remove" parameterType = "int">
+	<!-- 게시글 삭제 -->
+	<delete id ="remove" parameterType = "int">
 		delete from board where bno = #{bno}
 	</delete>
+	
+	<!-- 게시글 페이징 --> 
+	<select id = "listPageCri" resultType = "com.board.vo.BoardVo">
+		SELECT bno, title, writer, regDate, viewCnt
+		FROM board
+		ORDER by bno desc, regDate desc
+		LIMIT #{pageStart}, #{pageSize}
+	</select>
+<!-- 	
+	페이지정보를 10개씩 가져오기
+	<select id="listPage" resultType="com.board.vo.BoardVo">
+		select * 
+		from board
+		order by bno desc, regdate desc
+		limit #{page},10
+	</select>
+	 -->
+	<select id="pageCount" resultType="int">
+		select count(*) from board
+	</select>
+	
+
 
 </mapper>
+
+
+
+
+
+
+
+
+
+

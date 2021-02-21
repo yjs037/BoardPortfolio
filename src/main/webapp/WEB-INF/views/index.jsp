@@ -10,9 +10,15 @@
 <h1>
 	게시판
 </h1>
-<p>
-	<a href="/board/list">게시물 목록</a>
-</p>
+<ul>
+	<li>
+		<a href ="/board/list">게시물 목록</a>
+	</li>
+	<li>
+		<a href ="/board/listPage">페이징 목록</a>
+	</li>
+</ul>
+
 </body>
 </html>
 

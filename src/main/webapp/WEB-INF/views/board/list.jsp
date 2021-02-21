@@ -5,7 +5,10 @@
 <meta charset="UTF-8">
 <%@ include file = "../template/header.jsp" %>
 <style type="text/css">
-	
+	th,td{
+		text-align : center;
+		width : 100px;
+	}
 </style>
 </head>
 <body>
@@ -29,7 +32,7 @@
 			</tr>
 		</c:forEach>	
 	</table>
-	<a href="/">첫화면</a>
+	<button type = "button" onclick = "location.href ='/'">첫화면</button>
 	<button type = "button" onclick = "location.href ='/board/write'">글쓰기</button>
 </body>
 </html>
