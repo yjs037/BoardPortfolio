@@ -39,9 +39,9 @@ public class BoardController {
 		model.addAttribute("cri", boardService.listCri(cri));
 
 		PageMaker pm = new PageMaker();
+		
 		pm.setCri(cri);
 		pm.setTotalCount(boardService.pageCount());
-
 		model.addAttribute("pm", pm);
 	}
 
@@ -102,11 +102,13 @@ public class BoardController {
 	public String modify(BoardVo boardVo,
 						 Criteria cri,
 						 RedirectAttributes rttr) throws Exception {
-
 		boardService.modify(boardVo);
 		rttr.addAttribute("page", cri.getPage());
 		rttr.addAttribute("pageSzie", cri.getPageSize());
 		rttr.addAttribute("bno", boardVo.getBno());
+				//serachType, keyword
+		rttr.addAttribute("searchType", cri.getSearchType());
+		rttr.addAttribute("keyword", cri.getKeyword());
 		return "redirect:/board/read";
 	}
 
@@ -118,6 +120,9 @@ public class BoardController {
 		boardService.remove(bno);
 		rttr.addAttribute("page", cri.getPage());
 		rttr.addAttribute("pageSize", cri.getPageSize());
+				//serachType, keyword
+		rttr.addAttribute("searchType", cri.getSearchType());
+		rttr.addAttribute("keyword", cri.getKeyword());
 		return "redirect:/board/listPage";
 	}
 

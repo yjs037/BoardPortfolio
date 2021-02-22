@@ -4,6 +4,28 @@
  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace="boardMapper">
+	<sql id="search">
+		<if test="searchType != null">
+			<if test="searchType == 't'.toString()">
+				and title like CONCAT('%', #{keyword}, '%')
+			</if>
+			<if test="searchType == 'c'.toString()">
+				and content like CONCAT('%', #{keyword}, '%')
+			</if>
+			<if test="searchType == 'w'.toString()">
+				and writer like CONCAT('%', #{keyword}, '%')
+			</if>
+			<if test="searchType == 'tc'.toString()">
+				and (title like CONCAT('%', #{keyword}, '%')
+					or content like CONCAT('%', #{keyword}, '%'))
+			</if>
+			<if test="searchType == 'all'.toString()">
+				and (title like CONCAT('%', #{keyword}, '%')
+					or content like CONCAT('%', #{keyword}, '%')
+					or writer like CONCAT('%', #{keyword}, '%'))
+			</if>
+		</if>
+	</sql>
 	<!-- 데이터를 넣을 때는 parameterType을 사용  -->
 	<!-- 게시글 등록 -->
 	<insert id ="insert" parameterType = "com.board.vo.BoardVo">
@@ -35,6 +57,8 @@
 	<select id = "listPageCri" resultType = "com.board.vo.BoardVo">
 		SELECT bno, title, writer, regDate, viewCnt
 		FROM board
+		WHERE bno > 0
+		<include refid = "search"></include>
 		ORDER by bno desc, regDate desc
 		LIMIT #{pageStart}, #{pageSize}
 	</select>
@@ -46,9 +70,10 @@
 		order by bno desc, regdate desc
 		limit #{page},10
 	</select>
-	 -->
+-->
 	<select id="pageCount" resultType="int">
 		select count(*) from board
+		<include refid = "search"></include>
 	</select>
 	
 

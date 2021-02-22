@@ -7,9 +7,14 @@ public class Criteria {
 	private int page; // 현재 페이지 번호
 	private int pageSize; //보여줄 개시글의 갯수
 	
+	private String searchType;
+	private String keyword;
+	
 	public Criteria() {
 		this.page = 1;
 		this.pageSize = 10;
+		this.searchType = null;
+		this.keyword = null;
 	}
 
 	public int getPage() {
@@ -44,17 +49,43 @@ public class Criteria {
 	public int getPageStart() {
 		return (this.page-1) * this.pageSize;
 	}
+	
+	public String getSearchType() {
+		return searchType;
+	}
+
+	public void setSearchType(String searchType) {
+		this.searchType = searchType;
+	}
+
+	public String getKeyword() {
+		return keyword;
+	}
+
+	public void setKeyword(String keyword) {
+		this.keyword = keyword;
+	}
 
 	@Override
 	public String toString() {
-		return "Criteria [page=" + page + ", pageSize=" + pageSize + "]";
+		return "Criteria [page=" + page + ", pageSize=" + pageSize + ", searchType=" + searchType + ", keyword="
+				+ keyword + "]";
 	}
 	
 	public String makeQuery() {
-		return UriComponentsBuilder.newInstance()
+		UriComponentsBuilder uriComponentsBuilder = UriComponentsBuilder.newInstance()
 				.queryParam("page", page)
-				.queryParam("pageSize", this.pageSize)
-				.build().encode().toString();
+				.queryParam("pageSize", this.pageSize);
+		if(searchType != null) {
+			uriComponentsBuilder
+				.queryParam("searchType", this.searchType)
+				.queryParam("keyword", this.keyword);
+		}else {
+			
+		}				
+		return uriComponentsBuilder.build().encode().toString();
 	}
 	
 }
+
+
