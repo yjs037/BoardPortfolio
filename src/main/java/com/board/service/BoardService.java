@@ -11,7 +11,7 @@ public interface BoardService {
 	public List<BoardVo> listCri(Criteria cri) throws Exception;
 	
 	//모든 글 갯수
-	public int pageCount() throws Exception;
+	public int pageCount(Criteria cri) throws Exception;
 
 	public List<BoardVo> list() throws Exception;
 

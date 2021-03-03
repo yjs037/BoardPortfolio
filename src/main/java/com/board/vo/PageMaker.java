@@ -1,6 +1,5 @@
 package com.board.vo;
 
-import org.springframework.web.util.UriComponents;
 import org.springframework.web.util.UriComponentsBuilder;
 
 public class PageMaker {
@@ -106,7 +105,7 @@ public class PageMaker {
 	public String makeQuery(int page) {
 		UriComponentsBuilder uriComponentsBuilder = UriComponentsBuilder.newInstance()
 				.queryParam("page", page)
-				.queryParam("pageSzie", this.cri.getPageSize());
+				.queryParam("pageSize", this.cri.getPageSize());
 		if (this.cri.getSearchType() != null) {
 				uriComponentsBuilder
 				.queryParam("searchType", this.cri.getSearchType())

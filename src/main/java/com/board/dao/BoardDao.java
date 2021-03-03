@@ -11,7 +11,7 @@ public interface BoardDao {
 	public List<BoardVo> listPageCri(Criteria cri) throws Exception;
 	
 	// DB 테이블 모든 글 갯수 계산 후 리턴
-	public int pageCount() throws Exception;
+	public int pageCount(Criteria cri) throws Exception;
 	
 	//목록조회
 	public List<BoardVo> list() throws Exception;

@@ -71,8 +71,11 @@
 		limit #{page},10
 	</select>
 -->
+
 	<select id="pageCount" resultType="int">
-		select count(*) from board
+		select count(*) 
+		from board
+		where bno > 0
 		<include refid = "search"></include>
 	</select>
 	

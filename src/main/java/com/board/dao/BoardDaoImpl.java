@@ -29,8 +29,8 @@ public class BoardDaoImpl implements BoardDao {
 	}
 	
 	@Override
-	public int pageCount()throws Exception {
-		return sqlSession.selectOne("boardMapper.pageCount");
+	public int pageCount(Criteria cri)throws Exception {
+		return sqlSession.selectOne("boardMapper.pageCount",cri);
 	}
 	
 	@Override
@@ -52,5 +52,6 @@ public class BoardDaoImpl implements BoardDao {
 	 	public void remove(int bno) throws Exception {
 		 sqlSession.delete("boardMapper.remove", bno);
 	 }
+
 }
 

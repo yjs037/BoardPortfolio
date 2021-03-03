@@ -8,24 +8,28 @@
 	th,td{
 		text-align : center;
 	}
+	
+	.btn btn-success {
+	
+	}
 </style>
 <script type="text/javascript">
 	$(function(){
 		setSearchTypeSelect();
 
 		function setSearchTypeSelect(){
-			var $searchTypeSel = $('#searchTypeSel');
-			var $keyword = $('#keyword');
+			var searchTypeSel = $('#searchTypeSel');
+			var keyword = $('#keyword');
 			
-			$searchTypeSel.val('${pm.cri.searchType}').prop("selected",true);
+			searchTypeSel.val('${pm.cri.searchType}').prop("selected",true);
 			//검색 버튼이 눌리면
 			$('#searchBtn').on('click',function(){
-				var searchTypeVal = $searchTypeSel.val();
-				var keywordVal = $keyword.val();
+				var searchTypeVal = searchTypeSel.val();
+				var keywordVal = keyword.val();
 				//검색 조건 입력 안했으면 경고창 
 				if(!searchTypeVal){
 					alert("검색 조건을 선택하세요!");
-					$searchTypeSel.focus();
+					searchTypeSel.focus();
 					return;
 				//검색어 입력 안했으면 검색창
 				}else if(!keywordVal){
@@ -41,6 +45,8 @@
 			})
 		
 	}
+		
+		
 });
 </script>
 </head>
@@ -61,7 +67,7 @@
 		</div>
 
 
-	<table>
+	<table class="table table-striped table-hover">
 		<tr>
 			<th>번호</th>
 			<th>글쓴이</th>
@@ -98,7 +104,7 @@
 				</c:if>
 			</ul>
 			<button type="button" onclick="location.href ='/board/listPage'">첫화면</button>
-			<button type="button" onclick="location.href ='/board/write${pm.makeQuery(pm.cri.page)}'">글쓰기</button>
+			<button class="btn btn-success" type="button" onclick="location.href ='/board/write${pm.makeQuery(pm.cri.page)}'">글쓰기</button>
 		</div>
 	</div>
 </body>
