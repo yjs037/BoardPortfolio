@@ -24,7 +24,6 @@ public class BoardDaoImpl implements BoardDao {
 
 	@Override
 	public List<BoardVo> listPageCri(Criteria cri) throws Exception {
-		
 		return sqlSession.selectList("boardMapper.listPageCri", cri);
 	}
 	
@@ -33,10 +32,10 @@ public class BoardDaoImpl implements BoardDao {
 		return sqlSession.selectOne("boardMapper.pageCount",cri);
 	}
 	
-	@Override
-	public List<BoardVo> list() throws Exception {
-		return sqlSession.selectList("boardMapper.list");			
-	}
+	/*
+	 * @Override public List<BoardVo> list() throws Exception { return
+	 * sqlSession.selectList("boardMapper.list"); }
+	 */
 
 	@Override
 	public BoardVo read(int bno) throws Exception {
@@ -52,6 +51,12 @@ public class BoardDaoImpl implements BoardDao {
 	 	public void remove(int bno) throws Exception {
 		 sqlSession.delete("boardMapper.remove", bno);
 	 }
+
+	@Override
+	public void updateViewCnt(int bno) throws Exception {
+		sqlSession.update("boardMapper.updateViewCnt", bno);
+		
+	}
 
 }
 

@@ -13,7 +13,7 @@ public interface BoardService {
 	//모든 글 갯수
 	public int pageCount(Criteria cri) throws Exception;
 
-	public List<BoardVo> list() throws Exception;
+	//public List<BoardVo> list() throws Exception;
 
 	public void write(BoardVo boardVo) throws Exception;
 			

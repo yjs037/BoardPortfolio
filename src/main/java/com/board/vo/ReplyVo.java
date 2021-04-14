@@ -8,11 +8,20 @@ public class ReplyVo {
 	private int bno;
 	private String content;
 	private String writer;
+	private String userId;
 	private Date regDate;
 	private int countReply;
 	
 	public ReplyVo() {}	
 		
+	public String getUserId() {
+		return userId;
+	}
+
+	public void setUserId(String userId) {
+		this.userId = userId;
+	}
+
 	public int getCountReply() {
 		return countReply;
 	}
@@ -65,8 +74,8 @@ public class ReplyVo {
 
 	@Override
 	public String toString() {
-		return "ReplyVo [rno=" + rno + ", bno=" + bno + ", content=" + content + ", writer=" + writer + ", regDate="
-				+ regDate + ", countReply=" + countReply + "]";
+		return "ReplyVo [rno=" + rno + ", bno=" + bno + ", content=" + content + ", writer=" + writer + ", userId="
+				+ userId + ", regDate=" + regDate + ", countReply=" + countReply + "]";
 	}
 
 

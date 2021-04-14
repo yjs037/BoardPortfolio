@@ -1,11 +1,14 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"	pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
-<%@ include file = "../template/header.jsp" %>
-<title>게시판</title>
+<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath }/resources/css/bootstrap.css"/>
+<style type = "text/css">
 
+</style>
+<script type="text/javascript" src="${pageContext.request.contextPath }/resources/js/jquery-1.12.4.min.js"></script>
+<script type="text/javascript" src="${pageContext.request.contextPath }/resources/js/bootstrap.js"></script>
 <script type="text/javascript">
 		$(function(){
 			$(".cancel_btn").click(function(){
@@ -22,7 +25,7 @@
 </head>
 <body>	
 	<div id="root">
-		<h1> 게시판</h1>
+		<h1>댓글수정</h1>
 		<section id="container">
 			<form name="updateForm" role="form" method="post" action="/board/replyUpdate">
 				<input type="hidden" name="bno" value="${replyUpdate.bno}" readonly="readonly"/>
@@ -34,7 +37,8 @@
 				<table>
 					<tr>
 					  <td>
-					 	<label for="content">댓글 내용</label><input type="text" id="content" name="content" value="${replyUpdate.content}"/>
+					 	<label for="content"></label>
+					 	<textarea rows="5" cols="100" id="content" name="content" placeholder="댓글을 작성해주세요"></textarea>
 					  </td>
 					</tr>	
 				</table>

@@ -13,9 +13,10 @@ public interface BoardDao {
 	// DB 테이블 모든 글 갯수 계산 후 리턴
 	public int pageCount(Criteria cri) throws Exception;
 	
-	//목록조회
-	public List<BoardVo> list() throws Exception;
-
+	/*
+	 * //목록조회 public List<BoardVo> list() throws Exception;
+	 */
+	
 	//작성
 	public void write(BoardVo boardVo) throws Exception;
 		
@@ -27,5 +28,8 @@ public interface BoardDao {
 	
 	//게시물조회
 	public BoardVo read(int bno) throws Exception;
+	
+	//조회수
+	public void updateViewCnt(int bno) throws Exception;
 	
 }

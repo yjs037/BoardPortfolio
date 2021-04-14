@@ -1,18 +1,30 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ taglib prefix="fmt" uri = "http://java.sun.com/jsp/jstl/fmt" %>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
-<%@ include file = "../template/header.jsp" %>
+<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath }/resources/css/bootstrap.css"/>
 <style type="text/css">
 	th,td{
 		text-align : center;
 	}
 	
-	.btn btn-success {
-	
+	.form-inline {
+		text-align: right;
+		margin : 2px 0;
+		margin-bottom: 25px;
 	}
+	
+	#writeBtn {
+		text-align: right;
+	}
+
+	
 </style>
+<script type="text/javascript" src="${pageContext.request.contextPath }/resources/js/jquery-1.12.4.min.js"></script>
+<script type="text/javascript" src="${pageContext.request.contextPath }/resources/js/bootstrap.js"></script>
 <script type="text/javascript">
 	$(function(){
 		setSearchTypeSelect();
@@ -51,61 +63,85 @@
 </script>
 </head>
 <body>
-
-		<div class="form-inline">
-			<select id="searchTypeSel" name="searchType">
-		  		<option value="">검색조건</option>
-		  		<option value="t">제목</option> 
-		  		<option value="c">내용</option>
-		  		<option value="w">작성자</option>
-		  		<option value="tc">제목+내용</option>
-		  		<option value="all">전체조건</option>
-			</select>
-			<input class="form-control" type="text" id="keyword" name="keyword" 
-				value="${pageMaker.cri.keyword}" placeholder="검색어를 입력하세요"/>
-			<button id="searchBtn" class="btn btn-primary">Search</button>
-		</div>
-
-
+<div class = "container">
+	<div class ="login">
+		<%@include file = "../template/nav.jsp" %>
+	</div>
+	
+	<div class="form-inline">
+		<select id="searchTypeSel" name="searchType">
+	  		<option value="">검색조건</option>
+	  		<option value="t">제목</option> 
+	  		<option value="c">내용</option>
+	  		<option value="w">작성자</option>
+	  		<option value="tc">제목+내용</option>
+	  		<option value="all">전체조건</option>
+		</select>
+		<input class="form-control" type="text" id="keyword" name="keyword" 
+			value="${pageMaker.cri.keyword}" placeholder="검색어를 입력하세요"/>
+		<button id="searchBtn" class="btn btn-primary">Search</button>
+	</div>
+	
 	<table class="table table-striped table-hover">
 		<tr>
 			<th>번호</th>
-			<th>글쓴이</th>
 			<th>제목</th>
-			<th>작성일</th>
+			<th>작성자</th>
+			<th>작성날짜</th>
 			<th>조회수</th>
 		</tr>
 		<c:forEach var="list" items="${cri }">
 			<tr>
-				<td>${list.bno }</td>
-				<td>${list.writer }</td>
+				<td><c:out value ="${list.bno }"></c:out></td>
 				<td><a href="/board/read${pm.makeQuery(pm.cri.page)}&bno=${list.bno}">${list.title }</a></td>
-				<td><fmt:formatDate value="${list.regDate }"
-						pattern="yyyy-MM-dd" /></td>
-				<td>${list.viewCnt }</td>
+				<td><c:out value = "${list.writer }"></c:out></td>
+				<td><fmt:formatDate value="${list.regDate }" pattern="yyyy-MM-dd" /></td>
+				<td><c:out value = "${list.viewCnt }"></c:out></td>
 			</tr>
 		</c:forEach>
 	</table>
-				<!-- 페이징 -->
-	<div>
-		<div>
-			<ul>
+				
+	<!-- 페이징 -->
+
+	<div class = "text-center">
+		<ul class = "pagination">
+			<li>
 				<!-- 이전prev -->
 				<c:if test="${pm.prev }">
 					<a href="listPage${pm.makeQuery(pm.startPage-1)}">&laquo;</a>
 				</c:if>
+				
 				<!-- 페이지블럭 -->
 				<c:forEach begin="${pm.startPage }" end="${pm.endPage }" var="bno">
 					<a href="listPage${pm.makeQuery(bno)}">${bno}</a>
 				</c:forEach>
+				
 				<!-- 다음next -->
 				<c:if test="${pm.next && pm.endPage > 0}">
 					<a href="listPage${pm.makeQuery(pm.endPage+1)}">&raquo;</a>
 				</c:if>
-			</ul>
-			<button type="button" onclick="location.href ='/board/listPage'">첫화면</button>
-			<button class="btn btn-success" type="button" onclick="location.href ='/board/write${pm.makeQuery(pm.cri.page)}'">글쓰기</button>
-		</div>
+			</li>
+		</ul>	
 	</div>
+	<div id = "writeBtn">
+		<button class="btn btn-sm btn-primary" type="button" onclick="location.href ='/board/write${pm.makeQuery(pm.cri.page)}'">글쓰기</button>
+	</div>
+</div>
 </body>
-</html>					 
+</html>			
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+		 

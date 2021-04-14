@@ -3,10 +3,13 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<%@ include file = "../template/header.jsp" %>
-<title>게시판</title>
+<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath }/resources/css/bootstrap.css"/>
+<style type="text/css">
 
-	<script type="text/javascript">
+</style>
+<script type="text/javascript" src="${pageContext.request.contextPath }/resources/js/jquery-1.12.4.min.js"></script>
+<script type="text/javascript" src="${pageContext.request.contextPath }/resources/js/bootstrap.js"></script>
+<script type="text/javascript">
 	$(function(){
 		$(".cancel_btn").click(function(){
 			location.href = "/board/read?&page=${cri.page}"
@@ -22,7 +25,7 @@
 </head>
 	<body>	
 		<div id="root">
-			<h1> 게시판</h1>
+			<h1>댓글삭제</h1>
 			<section id="container">
 				<form name="deleteForm" role="form" method="post" action="/board/replyDelete">
 					<input type="hidden" name="bno" value="${replyDelete.bno}" readonly="readonly"/>

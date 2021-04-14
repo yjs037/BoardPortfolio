@@ -8,20 +8,30 @@ public class BoardVo {
 	private String title;
 	private String content;
 	private String writer;
+	private String userId;
 	private Date regDate;
 	private int viewCnt;
 
 	public BoardVo() {
 	}
 
-	public BoardVo(int bno, String title, String content, String writer, Date regDate, int viewCnt) {
+	public BoardVo(int bno, String title, String content, String writer, String userId, Date regDate, int viewCnt) {
 		super();
 		this.bno = bno;
 		this.title = title;
 		this.content = content;
 		this.writer = writer;
+		this.userId = userId;
 		this.regDate = regDate;
 		this.viewCnt = viewCnt;
+	}
+
+	public String getUserId() {
+		return userId;
+	}
+
+	public void setUserId(String userId) {
+		this.userId = userId;
 	}
 
 	public int getBno() {
@@ -74,8 +84,8 @@ public class BoardVo {
 
 	@Override
 	public String toString() {
-		return "BoardVo [bno=" + bno + ", title=" + title + ", content=" + content + ", writer=" + writer + ", regDate="
-				+ regDate + ", viewCnt=" + viewCnt + "]";
+		return "BoardVo [bno=" + bno + ", title=" + title + ", content=" + content + ", writer=" + writer + ", userId="
+				+ userId + ", regDate=" + regDate + ", viewCnt=" + viewCnt + "]";
 	}
 
 	@Override
@@ -103,6 +113,11 @@ public class BoardVo {
 			if (other.title != null)
 				return false;
 		} else if (!title.equals(other.title))
+			return false;
+		if (userId == null) {
+			if (other.userId != null)
+				return false;
+		} else if (!userId.equals(other.userId))
 			return false;
 		if (viewCnt != other.viewCnt)
 			return false;
