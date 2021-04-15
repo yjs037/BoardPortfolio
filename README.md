@@ -1,13 +1,13 @@
 # spring frmaework MVC게시판 & 로그인
 
 ### 1. 개발환경:  
-   ##### -OS : Windows 10  
-   ##### -Springframework version : 4.3.22RELEASE  
-   ##### -Java version : 1.8  
-   ##### -WEB Server : Apache  
-   ##### -WAS Server : Tomcat 8.0  
-   ##### -ORM : mybatis 3.5.5  
-   ##### -DB : mariadb 10.5.5  
+   + OS : Windows 10  
+   + Springframework version : 4.3.22RELEASE  
+   + Java version : 1.8  
+   + WEB Server : Apache  
+   + WAS Server : Tomcat 8.0  
+   + ORM : mybatis 3.5.5  
+   + DB : mariadb 10.5.5  
 
 ### 2. 기능:  
   #### 1.MVC게시판/crud    
