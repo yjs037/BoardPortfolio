@@ -2,7 +2,7 @@
 
 ### 1. 개발환경:  
    + OS : Windows 10  
-   + Springframework version : 4.3.22RELEASE  
+   + Spring framework version : 4.3.22RELEASE  
    + Java version : 1.8  
    + WEB Server : Apache  
    + WAS Server : Tomcat 8.0  
