@@ -52,13 +52,13 @@
    + /replyWrite, /replyUpdate, /replyDelete    
      게시판의 기능들과 동일하게 처리하였음  
      
-   2.회원가입  
+   2.회원가입
    + /register(get), /register(post)  
      회원가입시 아이디 중복체크와 유효성을 체크하여야한다. 해당 아이디가 존재하는지 count쿼리로 체킹해주고    
      정규식을 이용해 아이디,비밀번호,이름을 입력하게하였고, 자바스크립트를 통해 아이디 비밀번호 이름의 공백체크,  
      ajax를 이용해 아이디 중복체크 후 가입할 수 있게 하였다 또한, BCryptPasswordEncoder 클래스를 이용하여 입력한 비밀번호를 암호화 해주었다    
   
-   3.회원정보수정  
+   3.회원정보수정
    + /memberUpdateView(get), /memberUpdate(post)
      정규식을 이용해 비밀번호를 변경하도록 해두었고 비밀번호가 공백이거나 잘못되었을 경우 alert가 뜨게 처리하였음
  
@@ -67,20 +67,7 @@
      비밀번호가 공백일 경우에 alert가 뜨게 하였고
      ajax를 이용해 비밀번호가 맞으면 탈퇴 틀리면 리턴이되게 하였음  
     
-   5.로그인 및 로그아웃  
+   5.로그인 및 로그아웃
    + 로그인시 게시판으로 갈 수 있는 링크페이지  
    + /passCchk, /idChk  
-   + BCryptPasswordEncoder 클래스를 이용하여 암호화 처리  
-   
-     
-     
-     
-     
-     
-     
-     
-     
-     
-     
-     
-     
+   + BCryptPasswordEncoder 클래스를 이용하여 암호화 처리
